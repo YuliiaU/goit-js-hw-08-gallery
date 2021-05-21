@@ -87,19 +87,20 @@ function onEsckeyPress(evt) {
 };
 
 function onArrowKeyPress(evt) {
+   let i = galleryItems.findIndex(picture => picture.original === lightBoxImgEl.src);
     if (evt.code === 'ArrowLeft') {
-        const i = galleryItems.findIndex(picture => picture.original === lightBoxImgEl.src) - 1;
+        i -= 1;
         if (i === -1) {
             return
         }
-        lightBoxImgEl.src = galleryItems[i].original;
-        lightBoxImgEl.alt = galleryItems[i].description;
+        updatePictureAttr(galleryItems[i].original,galleryItems[i].description);
+    
     } else if (evt.code === 'ArrowRight') {
-        const i = galleryItems.findIndex(picture => picture.original === lightBoxImgEl.src) + 1;
+        i += 1;
         if (i === galleryItems.length-1) {
             return
         }
-        lightBoxImgEl.src = galleryItems[i].original;
-        lightBoxImgEl.alt = galleryItems[i].description;
+        updatePictureAttr(galleryItems[i].original,galleryItems[i].description);
+    
     };
 };
